@@ -26,7 +26,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools
 <img width="500" alt="Xcode iOS Simulator 1" src="https://github.com/user-attachments/assets/0fdbbdf0-43a5-44e0-8743-77a22c77d783">
 
 #### 2. Select the Runtime (iOS Version) you want to test (limited to installed versions).
-![Launch IOS Simulator Usage 1](https://github.com/user-attachments/assets/35417442-410c-474a-8bf1-c3e641ea09ac)
 <img width="500" alt="Xcode iOS Simulator 2" src="https://github.com/user-attachments/assets/6e44c44d-4fb1-4e44-aabe-398a3f85fa4e">
 
 #### 3. Select the device you want to test (limited to devices associated with the selected Runtime).
