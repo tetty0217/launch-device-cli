@@ -1,4 +1,4 @@
-const { execSync } = require("child_process");
+const { execSync, exec } = require("child_process");
 const { select } = require('@inquirer/prompts');
 
 const runCommand = (command) => {
@@ -10,14 +10,14 @@ const runCommand = (command) => {
   }
 };
 
-const getRuntimes = () => {
+const getIOSRuntimes = () => {
   const outputJson = runCommand("xcrun simctl list runtimes -j");
   const output = JSON.parse(outputJson);
 
   return output.runtimes;
 };
 
-const getDeviceTypes = (runtime) => {
+const getIOSDevices = (runtime) => {
   const outputJson = runCommand("xcrun simctl list devices -j");
   const output = JSON.parse(outputJson);
   
@@ -29,10 +29,10 @@ const getDeviceTypes = (runtime) => {
   return output.devices[runtime];
 };
 
-const main = async () => {
-  const runtimes = getRuntimes();
+const execIOSLaunch = async () => {
+  const runtimes = getIOSRuntimes();
   const selectedRuntime = await select({
-    message: 'select a runtime',
+    message: 'Select a runtime',
     loop: true,
     choices: runtimes.map((v) => ({
       name: v.name,
@@ -40,11 +40,11 @@ const main = async () => {
     })),
   });
 
-  const deviceTypes = getDeviceTypes(selectedRuntime);
+  const devices = getIOSDevices(selectedRuntime);
   const selectedDeviceId = await select({
-    message: 'select a device type',
+    message: 'Select a device type',
     loop: true,
-    choices: deviceTypes.map((v) => ({
+    choices: devices.map((v) => ({
       name: v.name,
       value: v.udid,
     })),
@@ -57,6 +57,50 @@ const main = async () => {
   runCommand("open -a Simulator");
 
   console.log(`Simulator is ready: ${selectedDeviceId} with ${selectedRuntime}`);
+}
+
+const getAndroidVirtualDevices = () => {
+  const output = runCommand("emulator -list-avds");
+
+  return output.split("\n").filter((v) => v);
+}
+
+const execAndroidLaunch = async () => {
+  const devices = getAndroidVirtualDevices();
+  const selectedAvd = await select({
+    message: 'Select a device',
+    loop: true,
+    choices: devices.map((v) => ({
+      value: v,
+    })),
+  });
+
+  console.log(`Booting device: ${selectedAvd} ...`);
+  runCommand(`emulator -avd ${selectedAvd}`);
+
+}
+
+const main = async () => {
+  const osNames = ['iOS', 'Android'];
+  const selectedOSName = await select({
+    message: 'Select a OS',
+    loop: true,
+    choices: osNames.map((v) => ({
+      value: v,
+    })),
+  });
+
+  switch (selectedOSName) {
+    case 'iOS':
+      execIOSLaunch();
+      break;
+    case 'Android':
+      execAndroidLaunch();
+      break;
+    default:
+      console.error("Invalid OS name");
+      process.exit(1);
+  }
 };
 
 main();
