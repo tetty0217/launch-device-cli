@@ -1,4 +1,4 @@
-# Launch IOS CLI
+# Launch Device CLI
 ## Overview
 This is a macOS script that allows you to interactively launch registered devices in both Xcode and Android Studio.
 
