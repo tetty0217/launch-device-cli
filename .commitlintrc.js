@@ -1,3 +1,6 @@
+/**
+ * @type {import('@commitlint/cli')}
+ */
 export default {
 	extends: ["@commitlint/config-conventional"],
 	rules: {

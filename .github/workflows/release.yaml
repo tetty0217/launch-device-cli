@@ -2,7 +2,7 @@ name: Release
 
 on:
   pull_request:
-    branches: [main]
+    branches: [feature/publish-test]
     types: [closed]
     paths: [
       'index.js',
@@ -48,3 +48,5 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Release
         run: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
