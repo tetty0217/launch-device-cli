@@ -1,23 +1,42 @@
 {
-	"name": "launch-simulator",
-	"type": "module",
-	"version": "0.0.1",
-	"main": "index.js",
-	"scripts": {
-		"run": "node index.js",
-		"check": "biome check",
-		"check:fix": "pnpm check --write"
-	},
-	"author": "tetty0217",
+	"name": "@tetty0217/launch-simulator",
+	"version": "0.0.2",
+	"description": "An interactive script to launch Xcode iOS Simulator and Android Studio AVD.",
+	"homepage": "https://github.com/tetty0217/launch-device-cli",
+	"bugs": "https://github.com/tetty0217/launch-device-cli/issues",
 	"license": "ISC",
-	"description": "",
-	"dependencies": {
-		"@inquirer/prompts": "7.1.0"
-	},
+	"author": "tetty0217 <dev.tetty@gmail.com>",
+	"files": ["index.js"],
+	"main": "index.js",
 	"bin": {
 		"launch-simulator": "./index.js"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:tetty0217/launch-device-cli.git"
+	},
+	"scripts": {
+		"run": "node index.js",
+		"check": "biome check",
+		"check:fix": "pnpm check --write",
+		"prepare": "husky",
+		"release": "semantic-release",
+		"release:dry": "pnpm release -d"
+	},
+	"dependencies": {
+		"@inquirer/prompts": "7.1.0"
+	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4"
-	}
+		"@biomejs/biome": "1.9.4",
+		"@commitlint/cli": "19.6.0",
+		"@commitlint/config-conventional": "19.6.0",
+		"@semantic-release/changelog": "6.0.3",
+		"@semantic-release/git": "10.0.1",
+		"husky": "9.1.7",
+		"semantic-release": "24.2.0"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/"
+	},
+	"type": "module"
 }

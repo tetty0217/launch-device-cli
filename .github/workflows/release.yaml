@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+    paths: [
+      'index.js',
+      'package.json',
+      'pnpm-lock.yaml'
+    ]
+      
+env:
+  NODE_VERSION: 20
+
+jobs:
+  setup:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup
+        with: 
+            version: 9
+            run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+
+  publish:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup
+        with: 
+            version: 9
+            run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'  
+      - name: Release
+        run: yarn release

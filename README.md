@@ -4,6 +4,7 @@ This is a macOS script that allows you to interactively launch registered device
 
 You need to register the tools and devices for each.
 
+## Installation
 ### Xcode
 - [Install Xcode](https://developer.apple.com/xcode/)
 - [Register Xcode Simulator](https://developer.apple.com/documentation/safari-developer-tools/adding-additional-simulators)
@@ -12,12 +13,35 @@ You need to register the tools and devices for each.
 - [Install Android Studio](https://developer.android.com/studio)
 - [Create Virtual Device](https://developer.android.com/studio/run/managing-avds)
 
-### NOTE
+#### NOTE
 1. The `emulator` command in Android Studio needs to be enabled and installed via `Android Studio > Settings > Language & Frameworks > Android SDK > SDK Tools`.
 2. You need to add the emulator command to your $PATH
 ```
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+```
+
+### Setup 
+Install the package with any package manager.
+
+**npm**
+```sh
+npm install -g @tetty0217/launch-simulator
+```
+
+**yarn**
+```sh
+yarn global add @tetty0217/launch-simulator
+```
+
+**pnpm**
+```sh
+pnpm add -g @tetty0217/launch-simulator
+```
+
+**bun**
+```sh
+bun add -g @tetty0217/launch-simulator
 ```
 
 ## Usage
