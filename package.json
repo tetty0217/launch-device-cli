@@ -21,7 +21,7 @@
 		"check:fix": "pnpm check --write",
 		"prepare": "husky",
 		"release": "semantic-release",
-		"release:dry": "yarn release -d"
+		"release:dry": "pnpm release -d"
 	},
 	"dependencies": {
 		"@inquirer/prompts": "7.1.0"
