@@ -1,24 +1,24 @@
 name: Release
 
 on:
-  pull_request:
+  push:
     branches: [feature/publish-test]
-    types: [closed]
-    paths: [
-      'index.js',
-      'package.json',
-      'pnpm-lock.yaml'
-    ]
+    # paths: [
+    #   'index.js',
+    #   'package.json',
+    #   'pnpm-lock.yaml'
+    # ]
       
 env:
   NODE_VERSION: 20
 
 jobs:
   setup:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with: 
           version: 9
@@ -36,6 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with: 
           version: 9
@@ -50,3 +52,4 @@ jobs:
         run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
