@@ -2,12 +2,12 @@ name: Release
 
 on:
   push:
-    branches: [feature/publish-test]
-    # paths: [
-    #   'index.js',
-    #   'package.json',
-    #   'pnpm-lock.yaml'
-    # ]
+    branches: [main]
+    paths: [
+      'index.js',
+      'package.json',
+      'pnpm-lock.yaml'
+    ]
 
 permissions:
   contents: read

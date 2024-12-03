@@ -2,7 +2,7 @@ name: Pretest
 
 on:
   pull_request:
-    branches: [feature/publish-test]
+    branches: [main]
     types: [opened, synchronize]
 
 env:
