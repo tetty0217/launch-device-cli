@@ -16,7 +16,7 @@
     "url": "git@github.com:tetty0217/launch-device-cli.git"
   },
   "scripts": {
-    "run": "node index.js",
+    "launch": "node index.js",
     "check": "biome check",
     "check:fix": "pnpm check --write",
     "prepare": "husky",
