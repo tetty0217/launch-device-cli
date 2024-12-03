@@ -9,8 +9,8 @@ You need to register the tools and devices for each.
 - [Register Xcode Simulator](https://developer.apple.com/documentation/safari-developer-tools/adding-additional-simulators)
 
 ### Android Studio
-- [Install Xcode](https://developer.apple.com/xcode/)
-- [Register Xcode AVD](https://developer.apple.com/documentation/safari-developer-tools/adding-additional-simulators)
+- [Install Android Studio](https://developer.android.com/studio)
+- [Create Virtual Device](https://developer.android.com/studio/run/managing-avds)
 
 ### NOTE
 1. The `emulator` command in Android Studio needs to be enabled and installed via `Android Studio > Settings > Language & Frameworks > Android SDK > SDK Tools`.
