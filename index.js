@@ -53,7 +53,7 @@ const execIOSLaunch = async () => {
 
 	try {
 		selectedDeviceId = await select({
-			message: "Select a device type",
+			message: "Select a device",
 			loop: true,
 			choices: devices.map((v) => ({
 				name: v.name,
