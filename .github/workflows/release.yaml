@@ -48,6 +48,11 @@ jobs:
           cache: 'pnpm'  
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+      - name: Set GitHub account
+        run: |
+          git config --global user.name tetty0217
+          git config --global user.email dev.tetty@gmail.com
+
       - name: Release
         run: pnpm release
         env:
