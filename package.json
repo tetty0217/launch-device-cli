@@ -6,9 +6,7 @@
   "bugs": "https://github.com/tetty0217/launch-device-cli/issues",
   "license": "ISC",
   "author": "tetty0217 <dev.tetty@gmail.com>",
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "main": "index.js",
   "bin": {
     "launch-simulator": "./index.js"
