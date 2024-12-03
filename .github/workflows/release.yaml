@@ -1,24 +1,27 @@
 name: Release
 
 on:
-  pull_request:
+  push:
     branches: [main]
-    types: [closed]
     paths: [
       'index.js',
       'package.json',
       'pnpm-lock.yaml'
     ]
-      
+
+permissions:
+  contents: read
+
 env:
   NODE_VERSION: 20
 
 jobs:
   setup:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with: 
           version: 9
@@ -34,8 +37,15 @@ jobs:
   publish:
     needs: setup
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+      issues: write 
+      pull-requests: write 
+      id-token: write 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with: 
           version: 9
@@ -46,5 +56,12 @@ jobs:
           cache: 'pnpm'  
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+      - name: Set GitHub account
+        run: |
+          git config --global user.name tetty0217
+          git config --global user.email dev.tetty@gmail.com
       - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm release
