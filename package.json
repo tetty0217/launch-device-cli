@@ -1,15 +1,23 @@
 {
-  "name": "launch-simulator-cli",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "launch": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@inquirer/prompts": "7.1.0"
-  }
+	"name": "launch-simulator",
+	"type": "module",
+	"version": "0.0.1",
+	"main": "index.js",
+	"scripts": {
+		"run": "node index.js",
+		"check": "biome check",
+		"check:fix": "pnpm check --write"
+	},
+	"author": "tetty0217",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@inquirer/prompts": "7.1.0"
+	},
+	"bin": {
+		"launch-simulator": "./index.js"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
 }
