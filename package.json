@@ -1,12 +1,14 @@
 {
   "name": "@tetty0217/launch-simulator",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "An interactive script to launch Xcode iOS Simulator and Android Studio AVD.",
   "homepage": "https://github.com/tetty0217/launch-device-cli",
   "bugs": "https://github.com/tetty0217/launch-device-cli/issues",
   "license": "ISC",
   "author": "tetty0217 <dev.tetty@gmail.com>",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "main": "index.js",
   "bin": {
     "launch-simulator": "./index.js"
