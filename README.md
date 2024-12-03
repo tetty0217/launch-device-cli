@@ -31,7 +31,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools
 #### 3. Select the device you want to test (limited to devices associated with the selected Runtime).
 <img width="500" alt="Xcode iOS Simulator 3" src="https://github.com/user-attachments/assets/eb97bda4-c26e-4373-a24d-a5837cb623bd">
 
-#### 4. The Simulator matching your selections in steps 1 and 2 will launch.
+#### 4. The device will launch.
 <img width="200" alt="Xcode iOS Simulator 4" src="https://github.com/user-attachments/assets/7ee1bfe5-fe24-4c59-932b-868ff6ddee81">
 
 #### 5. If the Simulator is already running or if you attempt to launch a Simulator that does not meet the conditions, an error will occur.
