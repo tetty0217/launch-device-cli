@@ -42,7 +42,7 @@ const execIOSLaunch = async () => {
 
   const devices = getIOSDevices(selectedRuntime);
   const selectedDeviceId = await select({
-    message: 'Select a device type',
+    message: 'Select a device',
     loop: true,
     choices: devices.map((v) => ({
       name: v.name,
@@ -81,7 +81,7 @@ const execAndroidLaunch = async () => {
 }
 
 const main = async () => {
-  const osNames = ['iOS', 'Android'];
+  const osNames = ['iOS', 'Android OS'];
   const selectedOSName = await select({
     message: 'Select a OS',
     loop: true,
@@ -94,7 +94,7 @@ const main = async () => {
     case 'iOS':
       execIOSLaunch();
       break;
-    case 'Android':
+    case 'Android OS':
       execAndroidLaunch();
       break;
     default:
