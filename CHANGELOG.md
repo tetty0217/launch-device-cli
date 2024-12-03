@@ -1,3 +1,5 @@
+## [1.0.1](https://github.com/tetty0217/launch-device-cli/compare/v1.0.0...v1.0.1) (2024-12-03)
+
 # 1.0.0 (2024-12-03)
 
 
