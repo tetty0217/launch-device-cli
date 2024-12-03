@@ -4,9 +4,14 @@ on:
   pull_request:
     branches: [main]
     types: [closed]
-
+    paths: [
+      'index.js',
+      'package.json',
+      'pnpm-lock.yaml'
+    ]
+      
 env:
-  NODE_VERSION: 20.10.0
+  NODE_VERSION: 20
 
 jobs:
   setup:
