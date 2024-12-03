@@ -8,7 +8,10 @@ on:
     #   'package.json',
     #   'pnpm-lock.yaml'
     # ]
-      
+
+permissions:
+  contents: read
+
 env:
   NODE_VERSION: 20
 
@@ -34,6 +37,11 @@ jobs:
   publish:
     needs: setup
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+      issues: write 
+      pull-requests: write 
+      id-token: write 
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,9 +60,8 @@ jobs:
         run: |
           git config --global user.name tetty0217
           git config --global user.email dev.tetty@gmail.com
-
       - name: Release
-        run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm release
