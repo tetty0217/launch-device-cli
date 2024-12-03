@@ -1,0 +1,49 @@
+name: Pretest
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+env:
+  NODE_VERSION: 20.10.0
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        if: github.event.pull_request.draft == false
+        run: pnpm i --frozen-lockfile
+
+  linter:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - name: Linter
+        run: pnpm check
+
+  dry_release:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+      - name: 【DRY】Release
+        run: pnpm release:dry
